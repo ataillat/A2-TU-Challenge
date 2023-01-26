@@ -29,29 +29,45 @@ namespace TU_Challenge
 
         public static string MixString(string a, string b)
         {
-            if (a == string.Empty || b == string.Empty || a == null || b == null)
+            string r = "";
+            int lenghtMix;
+            if (a == null || b == null || a == "" || b == "")
             {
                 throw new ArgumentException();
             }
-
-            string r = "";
-
-            int minLength = Math.Min(a.Length, b.Length);
-            for (int i = 0; i < minLength; i++)
+            if (a.Length < b.Length)
+            {
+                lenghtMix = a.Length;
+                for (int i = 0; i < lenghtMix; i++)
+                {
+                    r += a[i];
+                    r += b[i];
+                }
+                for (int i = lenghtMix; i < b.Length; i++)
+                {
+                    r += b[i];
+                }
+                return r;
+            }
+            if (a.Length > b.Length)
+            {
+                lenghtMix = b.Length;
+                for (int i = 0; i < lenghtMix; i++)
+                {
+                    r += a[i];
+                    r += b[i];
+                }
+                for (int i = lenghtMix; i < a.Length; i++)
+                {
+                    r += a[i];
+                }
+                return r;
+            }
+            for (int i = 0; i < a.Length; i++)
             {
                 r += a[i];
                 r += b[i];
             }
-
-            if (a.Length > minLength)
-            {
-                r += a.Substring(minLength);
-            }
-            else if (b.Length > minLength)
-            {
-                r += b.Substring(minLength);
-            }
-
             return r;
         }
 
@@ -104,13 +120,29 @@ namespace TU_Challenge
 
         public static string BazardString(string input)
         {
-
-            throw new NotImplementedException();
+            string result = "";
+            for (int i = 0; i < input.Length; i++)
+            {
+                result += input[i];
+                i++;
+            }
+            for (int i = 1; i < input.Length; i++)
+            {
+                result += input[i];
+                i++;
+            }
+            return result;
         }
 
         public static string UnBazardString(string input)
         {
-            throw new NotImplementedException();
+            string result = "";
+            for (int i = 0; i < input.Length / 2; i++)
+            {
+                result += input[i];
+                result += input[i + input.Length / 2];
+            }
+            return result;
         }
 
         public static string ToCesarCode(string input, int offset)

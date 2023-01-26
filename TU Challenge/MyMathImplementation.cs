@@ -111,22 +111,17 @@ namespace TU_Challenge
             throw new NotImplementedException();
         }
 
-        public static bool IsInOrder(int a, int b)
+        public static int IsInOrder(int a, int b)
         {
-            /*
             if (a == b)
             {
                 return 0;
             }
             return (b - a) / Math.Abs(a - b);
-            */
-            throw new NotImplementedException();
-
         }
 
         public static bool IsListInOrder(List<int> list)
         {
-            /*
             if (list.Count < 2)
             {
                 return true;
@@ -141,8 +136,6 @@ namespace TU_Challenge
                 }
             }
             return true;
-            */
-            throw new NotImplementedException();
         }
 
         public static List<int> GenericSort(List<int> toSort, Func<int, int, bool> isInOrder)
