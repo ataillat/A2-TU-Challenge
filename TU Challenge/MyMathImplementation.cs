@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,16 +17,15 @@ namespace TU_Challenge
 
         public static bool IsMajeur(int age)
         {
-            if (age > 17)
+            if (age >= 0 && age <= 140)
             {
-                return true;
-                throw new NotImplementedException();
-            }
-            else
-            {
+                if (age >= 18)
+                {
+                    return true;
+                }
                 return false;
-                throw new NotImplementedException();
             }
+            throw new ArgumentException();
         }
 
         public static bool IsEven(int a)
@@ -81,40 +81,17 @@ namespace TU_Challenge
 
         public static List<int> GetAllPrimary(int a)
         {
-            List<int> primes = new List<int>();
-            primes.Add(2);
-            for (int i = 1; i <= a; i = i + 2)
+            List<int> list = new List<int>();
+            for (int i = 2; i <= a; i++)
             {
-                if (DetermineIsPrime(i) == true && i > 1)
+                if (IsPrimary(i))
                 {
-                    primes.Add(i);
+                    list.Add(i);
                 }
             }
-            return primes;
+
+            return list;
             throw new NotImplementedException();
-        }
-        static bool DetermineIsPrime(int num)
-        {
-            int y;
-            List<int> divisors = new List<int>();
-            double x = Math.Sqrt(num);
-            y = (int)Math.Ceiling(x);
-            if (num == 3 || num == 2)
-            {
-                return true;
-            }
-            for (int counter = 1; counter <= y + 1; counter++)
-            {
-                if (num % counter == 0)
-                {
-                    divisors.Add(counter);
-                    if (divisors.Count > 1)
-                    {
-                        return false;
-                    }
-                }
-            }
-            return true;
         }
 
         public static int Power2(int a)
@@ -125,21 +102,46 @@ namespace TU_Challenge
 
         public static int Power(int a, int b)
         {
-            for (int c = 0; c < b; c++)
+            int x = a;
+            for (int i = 1; i < b; i++)
             {
-                a *= a;
+                x *= a;
             }
-            return a;
+            return x;
             throw new NotImplementedException();
         }
 
         public static bool IsInOrder(int a, int b)
         {
+            /*
+            if (a == b)
+            {
+                return 0;
+            }
+            return (b - a) / Math.Abs(a - b);
+            */
             throw new NotImplementedException();
+
         }
 
         public static bool IsListInOrder(List<int> list)
         {
+            /*
+            if (list.Count < 2)
+            {
+                return true;
+            }
+
+            for (int i = 0; i < list.Count - 1; i++)
+            {
+                int result = IsInOrder(list[i], list[i + 1]);
+                if (result < 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+            */
             throw new NotImplementedException();
         }
 
@@ -153,9 +155,29 @@ namespace TU_Challenge
             throw new NotImplementedException();
         }
 
-        public static object Sort(List<int> toSort)
+        public static List<int> Sort(List<int> toSort)
         {
-            throw new NotImplementedException();
+            for (int i = 1; i < toSort.Count; i++)
+            {
+                for (int j = 0; j < toSort.Count; j++)
+                {
+                    if (j == i)
+                    {
+                        continue;
+                    }
+                    
+                    if (toSort[i] < toSort[j] && i > j)
+                    {
+                        int t = toSort[j];
+                        for (int d = i; d > j; d--)
+                        {
+                            toSort[d] = toSort[d-1];
+                        }
+                        toSort[j] = t;
+                    }
+                }
+            }
+            return toSort;
         }
     }
 }
