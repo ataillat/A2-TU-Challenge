@@ -12,7 +12,6 @@ namespace TU_Challenge
         public static int Add(int a, int b)
         {
             return a+ b;
-            throw new NotImplementedException();
         }
 
         public static bool IsMajeur(int age)
@@ -33,12 +32,10 @@ namespace TU_Challenge
             if (a % 2 == 0)
             {
                 return true;
-                throw new NotImplementedException();
             }
             else
             {
                 return false;
-                throw new NotImplementedException();
             }
         }
 
@@ -47,12 +44,10 @@ namespace TU_Challenge
             if (a % b == 0)
             {
                 return true;
-                throw new NotImplementedException();
             }
             else
             {
                 return false;
-                throw new NotImplementedException();
             }
         }
 
@@ -70,12 +65,10 @@ namespace TU_Challenge
             if (b == 2)
             {
                 return true;
-                throw new NotImplementedException();
             }
             else
             {
                 return false;
-                throw new NotImplementedException();
             }
         }
 
@@ -89,15 +82,12 @@ namespace TU_Challenge
                     list.Add(i);
                 }
             }
-
             return list;
-            throw new NotImplementedException();
         }
 
         public static int Power2(int a)
         {
             return a*a;
-            throw new NotImplementedException();
         }
 
         public static int Power(int a, int b)
@@ -108,7 +98,6 @@ namespace TU_Challenge
                 x *= a;
             }
             return x;
-            throw new NotImplementedException();
         }
 
         public static int IsInOrder(int a, int b)
